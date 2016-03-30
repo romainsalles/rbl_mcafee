@@ -2,6 +2,8 @@
 
 Solution to test if an IP address is listed in the McAfee RBL.
 
+McAfee uses the Spamhaus Project (https://www.spamhaus.org/).
+
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -18,16 +20,19 @@ Or install it yourself as:
 
 ## Usage
 
-To verify if an IP address is listed in the McAfee RBL:
+To verify if an IP address is listed in one of the Spamhaus IP zones:
 
 ```ruby
-RblMcafee.blacklisted?('127.0.0.1')
+zone = RblMcafee::Zone.new('127.0.0.1')
+zone.pbl?
+zone.sbl?
+zone.xbl?
 ```
 
 Expected returned values are the following:
 
-* `true` when the IP address **is listed** in the McAfee RBL
-* `false` when the IP address **isn't listed** in the McAfee RBL
+* `true` when the IP address **is listed** in the zone
+* `false` when the IP address **isn't listed** in the zone
 
 When a **timeout** occurs, a `RblMcafee::Timeout` exception is raised.
 
