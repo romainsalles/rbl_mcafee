@@ -15,7 +15,8 @@ module RblMcafee
       raise ArgumentError, 'Invalid IP'
     end
 
-    resolved_ip = Resolv::getaddress("#{ip}.cidr.bl.mcafee.com")
+    reversed_ip = ip.split('.').reverse.join('.')
+    resolved_ip = Resolv::getaddress("#{reversed_ip}.cidr.bl.mcafee.com")
     return !!resolved_ip.match(MC_AFEE_RBL_LISTED_REGEX)
 
     rescue Resolv::ResolvError
