@@ -60,11 +60,11 @@ module RblMcafee
     #
     # DNSBL | Returns       | Contains
     # ------+---------------+---------------------------------------------------
-    # SBL   | 127.0.0.2-3	  | Static UBE sources, verified spam services
+    # SBL   | 127.0.0.2-3   | Static UBE sources, verified spam services
     #       |               | (hosting or support) and ROKSO spammers
-    # XBL   | 127.0.0.4-7	  | Illegal 3rd party exploits, including proxies,
-    #       \               | worms and trojan exploits
-    # PBL   | 127.0.0.10-11	| IP ranges which should not be delivering
+    # XBL   | 127.0.0.4-7   | Illegal 3rd party exploits, including proxies,
+    #       |               | worms and trojan exploits
+    # PBL   | 127.0.0.10-11 | IP ranges which should not be delivering
     #       |               | unauthenticated SMTP email.
     def extract_zone(resolved_ip)
       return nil if resolved_ip.nil?
